@@ -3,6 +3,7 @@ var box
 var playon = true
 var playerO = 0
 var playerX = 0
+var count = 0
 var stopplay = false
 var pX = document.getElementById('playerx')
 var pO = document.getElementById('playero')
@@ -18,6 +19,7 @@ document.getElementById('reset').addEventListener('click', (e) => {
     console.log('reset')
     playerO = 0;
     playerX = 0;
+    count = 0;
     pX.innerHTML = 'player X: 0'
     pO.innerHTML = 'player O: 0'
 
@@ -34,17 +36,19 @@ document.getElementById('gamebord').addEventListener('click', (e) => {
         console.log('select another Square!!')
 
     }
-    else if (stopplay) {
+    if (stopplay || count === 9) {
         alert("match ended")
         resetBord()
         stopplay = false
         playon = true
+        count = 0
 
 
 
     }
     else {
         if (playon) {
+            count++
             box.appendChild(x)
             box.classList.add('x')
             playon = !playon
@@ -58,6 +62,7 @@ document.getElementById('gamebord').addEventListener('click', (e) => {
 
         }
         else {
+            count++
             box.appendChild(o)
             box.classList.add('o')
             playon = !playon
