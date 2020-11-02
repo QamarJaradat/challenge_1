@@ -33,20 +33,17 @@ document.getElementById('gamebord').addEventListener('click', (e) => {
     var x = document.createTextNode("X")
     var o = document.createTextNode("O")
 
-    if (box.classList.contains('x') || box.classList.contains('o')) {
-        console.log('select another Square!!')
-
-    }
     if (stopplay || count === 9) {
         alert("match ended")
         resetBord()
         stopplay = false
         playon = true
         count = 0
-
-
-
     }
+    if (box.classList.contains('x') || box.classList.contains('o')) {
+        console.log('select another Square!!')
+    }
+
     else {
         if (playon) {
             count++
