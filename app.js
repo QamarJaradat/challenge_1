@@ -1,3 +1,4 @@
+//mini app1 (Tic Toc Toe)
 console.log('This is Tic Toc Toe, Do you want to play?')
 var box
 var playon = true
