@@ -49,7 +49,6 @@ document.getElementById('gamebord').addEventListener('click', (e) => {
                 stopplay = true
                 playerX++
                 pX.innerHTML = 'player X: ' + playerX
-                alert("match ended")
             }
         }
         else {
