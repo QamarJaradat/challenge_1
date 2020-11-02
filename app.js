@@ -27,6 +27,7 @@ document.getElementById('reset').addEventListener('click', (e) => {
 
 })
 document.getElementById('gamebord').addEventListener('click', (e) => {
+    var string
     box = e.target
     var x = document.createTextNode("X")
     var o = document.createTextNode("O")
@@ -42,8 +43,7 @@ document.getElementById('gamebord').addEventListener('click', (e) => {
             box.classList.add('x')
             playon = !playon//switch the turn
             if (checkwhoWon('x')) {
-                // console.log("X player won the match!!")
-                alert("X player won the match!!")
+                string = "X player won the match!!"
                 stopplay = true
                 playerX++
                 pX.innerHTML = 'player X: ' + playerX
@@ -55,7 +55,7 @@ document.getElementById('gamebord').addEventListener('click', (e) => {
             box.classList.add('o')
             playon = !playon //switch the turn
             if (checkwhoWon('o')) {
-                alert("O player won the match!!")
+                string = "O player won the match!!"
                 stopplay = true
                 playerO++
                 pO.innerHTML = 'player O: ' + playerO
@@ -63,7 +63,9 @@ document.getElementById('gamebord').addEventListener('click', (e) => {
         }
         //check if one of the player won or no one won
         if (count === 9 || stopplay) {
-            alert("match ended")
+            if (stopplay)
+                alert(string)
+            else alert("match ended")
             resetBord()
             stopplay = false
             playon = true //start with X player
