@@ -33,13 +33,6 @@ document.getElementById('gamebord').addEventListener('click', (e) => {
     var x = document.createTextNode("X")
     var o = document.createTextNode("O")
 
-    if (stopplay || count === 9) {
-        alert("match ended")
-        resetBord()
-        stopplay = false
-        playon = true
-        count = 0
-    }
     if (box.classList.contains('x') || box.classList.contains('o')) {
         console.log('select another Square!!')
     }
@@ -56,8 +49,8 @@ document.getElementById('gamebord').addEventListener('click', (e) => {
                 stopplay = true
                 playerX++
                 pX.innerHTML = 'player X: ' + playerX
+                alert("match ended")
             }
-
         }
         else {
             count++
@@ -71,9 +64,15 @@ document.getElementById('gamebord').addEventListener('click', (e) => {
                 playerO++
                 pO.innerHTML = 'player O: ' + playerO
 
-
-
             }
+        }
+        if (count === 9 || stopplay) {
+            alert("match ended")
+            resetBord()
+            stopplay = false
+            playon = true
+            count = 0
+
         }
     }
 })
