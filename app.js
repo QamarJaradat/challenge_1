@@ -28,8 +28,6 @@ document.getElementById('reset').addEventListener('click', (e) => {
 })
 document.getElementById('gamebord').addEventListener('click', (e) => {
     box = e.target
-    // console.log(box)
-    //console.log(e)
     var x = document.createTextNode("X")
     var o = document.createTextNode("O")
 
@@ -42,7 +40,7 @@ document.getElementById('gamebord').addEventListener('click', (e) => {
             count++
             box.appendChild(x)
             box.classList.add('x')
-            playon = !playon
+            playon = !playon//switch the turn
             if (checkwhoWon('x')) {
                 // console.log("X player won the match!!")
                 alert("X player won the match!!")
@@ -55,23 +53,21 @@ document.getElementById('gamebord').addEventListener('click', (e) => {
             count++
             box.appendChild(o)
             box.classList.add('o')
-            playon = !playon
+            playon = !playon //switch the turn
             if (checkwhoWon('o')) {
-                // console.log("O player won the match!!")
                 alert("O player won the match!!")
                 stopplay = true
                 playerO++
                 pO.innerHTML = 'player O: ' + playerO
-
             }
         }
+        //check if one of the player won or no one won
         if (count === 9 || stopplay) {
             alert("match ended")
             resetBord()
             stopplay = false
-            playon = true
+            playon = true //start with X player
             count = 0
-
         }
     }
 })
@@ -106,19 +102,20 @@ var checkwhoWon = (player) => {
         return false
 }
 
+//shorter way to access the table cells by class name (to not repete the long line)
 var element = (name) => { return document.getElementsByClassName(name)[0].classList }
 
 var resetBord = () => {
     console.log('clean')
     var table = document.getElementById("gamebord");
+    //clear the table cells
     for (var i = 0; i < 3; i++) {
         for (j = 0; j < 3; j++) {
             table.rows[i].cells[j].innerHTML = ''
         }
     }
     array.forEach(data => {
-        // var squer = document.getElementsByClassName(data)
-        // if
+        //remving X and O classes
         var b = element(data)
         if (b.contains('x')) {
             b.remove('x')
@@ -127,5 +124,4 @@ var resetBord = () => {
             b.remove('o')
         }
     })
-
 }
